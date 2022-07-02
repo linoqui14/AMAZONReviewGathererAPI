@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 from review_model import Review
 import argparse
+import wordninja as wninja
 
 HEADERS = ({'User-Agent':
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) \
@@ -35,17 +36,20 @@ def cus_data(soup):
         name = data_arr[0].split(rating)[0]
         title = data_arr[1]
         region = ''
+        #check if region is correctly split
         if len(data_arr[2].split(' on')[0].split('Reviewed in the '))==1:
-            region = data_arr[2].split(' on')[0].split('Reviewed in the ')[0]
+            region = data_arr[2].split(' on')[0].split('Reviewed in ')[1]
+            if region == '':
+                region = data_arr[2].split(' on')[0].split('Reviewed in ')[0]
         else:
-             region = data_arr[2].split(' on')[0].split('Reviewed in the ')[1]
-        date = data_arr[2].split('on ')[1].split('Style')[0]
-        style =  data_arr[2].split('on ')[1].split('Style')[1].split(': ')[1].split('Verified Purchase')[0]
+            region = data_arr[2].split(' on')[0].split('Reviewed in the ')[1]
+        #getting date and remove undesired words
+        date = wninja.split(data_arr[2].split('on ')[1])[0:3]
         comment = data_arr[3]
         num_found_helpful = data_arr[5].split(' ')[0]
         if num_found_helpful=='':
             num_found_helpful = 0
-        review = Review(name,rating_double,title,style,comment,region,date,num_found_helpful)
+        review = Review(name,rating_double,title,comment,region,date,num_found_helpful)
         cus_list.append(review)
     return cus_list
 
@@ -59,27 +63,19 @@ def getReviewData(
     url = url+'&reviewerType=avp_only_reviews&pageNumber='
     while True:
         url = url+str(page)
-        
-        
         soup = html_code(url)
         cus_res = cus_data(soup)
-        
-    
         page+=1
         if cus_res == 'n/a':
             print("Ah shit")
             continue
         if len(cus_res) == 0:
             break
-        for reviews in cus_res:
-            print(reviews.name)
-            rating = float(reviews.rating)
-            rating_str = ""
-            for x in range(0,int(rating)):
-                rating_str+="*"
-            print(rating_str)
-            print(reviews.comment)
-            print("-------------")
+        for review in cus_res:
+            # Show reviews 
+            print(review.name)
+            pass
+            
         print("-------------------------- Page: "+str(page-1))
     
 def parse_opt():
