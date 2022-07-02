@@ -55,11 +55,12 @@ def getReviewData(
     if url == '':
         return
     page = 1
-
+    url.replace('pageNumber=1','')
+    url = url+'&reviewerType=avp_only_reviews&pageNumber='
     while True:
-        url = "https://www.amazon.com/FIODIO-Mechanical-Anti-Ghosting-Quick-Response-Multimedia/product-reviews/B086161951/ref=cm_cr_getr_d_paging_btm_next_6?ie=UTF8&reviewerType=avp_only_reviews&pageNumber="+str(page)
+        url = url+str(page)
         
-
+        
         soup = html_code(url)
         cus_res = cus_data(soup)
         
