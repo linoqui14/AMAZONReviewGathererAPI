@@ -34,6 +34,22 @@ def cus_data(soup):
             continue      
         name = data_arr[0].split(rating)[0]
         title = data_arr[1]
+        test1 = data_arr[2].replace("Reviewed in the ", "").replace("Reviewed in ", "").replace("on", "")
+        test2 = test1.split(" ")
+        test2 = list(filter(None, test2))
+        test3 = []
+        test = 0
+        i = 0
+        monthscanner = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        # loop purpose not finished
+        while(i != len(monthscanner)):
+            try:
+                test = test2.index(monthscanner[i])
+            except:
+                pass #idk wadufook
+            test3.append(test2[test])
+            i = i + 1
+        print(test2)
         region = ''
         if len(data_arr[2].split(' on')[0].split('Reviewed in the '))==1:
             region = data_arr[2].split(' on')[0].split('Reviewed in the ')[0]
@@ -70,15 +86,15 @@ def getReviewData(
             continue
         if len(cus_res) == 0:
             break
-        for reviews in cus_res:
-            print(reviews.name)
-            rating = float(reviews.rating)
-            rating_str = ""
-            for x in range(0,int(rating)):
-                rating_str+="*"
-            print(rating_str)
-            print(reviews.comment)
-            print("-------------")
+        #for reviews in cus_res:
+        #    print(reviews.name)
+        #    rating = float(reviews.rating)
+        #    rating_str = ""
+        #    for x in range(0,int(rating)):
+        #        rating_str+="*"
+        #    print(rating_str)
+        #    print(reviews.comment)
+        #    print("-------------")
         print("-------------------------- Page: "+str(page-1))
     
 def parse_opt():
