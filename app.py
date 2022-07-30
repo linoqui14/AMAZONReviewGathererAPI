@@ -95,8 +95,9 @@ def getReviewData(
         url = url+str(page)
         
         soup = html_code(url)
-        cus_res = cus_data(soup)
         return url
+        cus_res = cus_data(soup)
+        
         page+=1
         if cus_res == 'n/a':
             continue
