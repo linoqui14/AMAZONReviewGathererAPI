@@ -76,6 +76,7 @@ def cus_data(soup):
 @app.route('/')
 def test():
     return 'Test'
+    
 @app.route('/<url>',methods=['GET'])
 def getReviewData(
     url = ''

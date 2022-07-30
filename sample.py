@@ -8,9 +8,10 @@ from endecrypt import Deepy
 
 #AMAZON URL
 sample_url = 'https://www.amazon.com/Roku-Express-Streaming-Wireless-Controls/product-reviews/B0916TKFF2/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews'
+
 #convert to ascii
 ascii_url = Deepy.asciisize(sample_url)
-
+print(ascii_url)
 
 
 r = requests.get('http://127.0.0.1:5000/'+ascii_url)#append it to url request
