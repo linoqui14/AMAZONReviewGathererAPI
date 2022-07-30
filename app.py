@@ -89,10 +89,11 @@ def getReviewData(
     page = 1
     url.replace('pageNumber=1','')
     url = url+'&reviewerType=avp_only_reviews&pageNumber='
-    return url
+    
     reviews = []
     while True:
         url = url+str(page)
+        return url
         soup = html_code(url)
         cus_res = cus_data(soup)
         page+=1
