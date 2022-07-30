@@ -91,21 +91,20 @@ def getReviewData(
     url = url+'&reviewerType=avp_only_reviews&pageNumber='
     
     reviews = []
-    while True:
-        url = url+str(page)
-        
-        soup = html_code(url)
-       
-        cus_res = cus_data(soup)
-        
-        page+=1
-        if cus_res == 'n/a':
-            continue
-        if len(cus_res) == 0:
-            break
-
-        for review in cus_res:
-            reviews.append(review)
+    try:
+        while True:
+            url = url+str(page)
+            soup = html_code(url)
+            cus_res = cus_data(soup)
+            page+=1
+            if cus_res == 'n/a':
+                continue
+            if len(cus_res) == 0:
+                break
+            for review in cus_res:
+                reviews.append(review)
+    except:
+        return 'error'
     to_json_array = {}
     for i,review in enumerate(reviews):
         to_json_array[i] = review.jasonnize()
