@@ -83,12 +83,13 @@ def getReviewData(
 ):
     
     url =  Deepy.deasciisize(url)
-    return url
+    
     if url == '':
         return
     page = 1
     url.replace('pageNumber=1','')
     url = url+'&reviewerType=avp_only_reviews&pageNumber='
+    return url
     reviews = []
     while True:
         url = url+str(page)
