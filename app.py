@@ -85,11 +85,10 @@ def getReviewData(
     url =  Deepy.deasciisize(url)
     
     if url == '':
-        return
+        return ''
     page = 1
     url.replace('pageNumber=1','')
     url = url+'&reviewerType=avp_only_reviews&pageNumber='
-    
     reviews = []
     try:
         while True:
@@ -98,6 +97,7 @@ def getReviewData(
                 soup = html_code(url)
                 cus_res = cus_data(soup)
                 page+=1
+                return 'error'
                 if cus_res == 'n/a':
                     continue
                 if len(cus_res) == 0:
