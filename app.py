@@ -90,24 +90,24 @@ def getReviewData(
     url.replace('pageNumber=1','')
     url = url+'&reviewerType=avp_only_reviews&pageNumber='
     reviews = []
-    try:
-        while True:
-            try:
-                url = url+str(page)
-                soup = html_code(url)
-                cus_res = cus_data(soup)
-                page+=1
+
+    while True:
+
+            url = url+str(page)
+            soup = html_code(url)
+            cus_res = cus_data(soup)
+            page+=1
+            
+            if cus_res == 'n/a':
+                continue
+            if len(cus_res) == 0:
+                break
+            for review in cus_res:
+                reviews.append(review)
+       
               
-                if cus_res == 'n/a':
-                    continue
-                if len(cus_res) == 0:
-                    break
-                for review in cus_res:
-                    reviews.append(review)
-            except:
-                return 'error1'
-    except:
-        return 'error2'
+
+     
     to_json_array = {}
     for i,review in enumerate(reviews):
         to_json_array[i] = review.jasonnize()
