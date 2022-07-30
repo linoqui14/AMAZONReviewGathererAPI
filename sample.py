@@ -27,6 +27,8 @@ for review in reviews:#alterate all reviews
     #ato siya ge butang sa list
     #then you can just say
     print(review.name)#for example
+    print(review.comment)#for example
+    print('-------------------------------')
 
 
 

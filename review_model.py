@@ -18,7 +18,7 @@ class Review:
             'name':self.name,
             'rating':self.rating,
             'title':self.title,
-            'comment':self.name,
+            'comment':self.comment,
             'region':self.region,
             'date':self.date,
             'num_found_helpful':self.num_found_helpful,
