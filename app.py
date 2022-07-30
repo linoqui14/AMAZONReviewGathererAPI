@@ -105,9 +105,9 @@ def getReviewData(
                 for review in cus_res:
                     reviews.append(review)
             except:
-                return 'error'
+                return 'error1'
     except:
-        return 'error'
+        return 'error2'
     to_json_array = {}
     for i,review in enumerate(reviews):
         to_json_array[i] = review.jasonnize()
