@@ -1,4 +1,4 @@
-from typing import List
+
 import requests
 import json
 from review_model import Review
@@ -27,7 +27,7 @@ for review in reviews:#alterate all reviews
     #ato siya ge butang sa list
     #then you can just say
     print(review.name)#for example
-    print(review.comment)#for example
+    print(review.title)#for example
     print('-------------------------------')
 
 

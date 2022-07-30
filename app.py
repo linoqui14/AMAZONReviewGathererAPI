@@ -1,6 +1,5 @@
 import json
 from flask import Flask
-from cryptography.fernet import Fernet
 import requests
 from bs4 import BeautifulSoup
 from review_model import Review
