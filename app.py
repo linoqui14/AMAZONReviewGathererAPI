@@ -95,15 +95,14 @@ def getReviewData(
             soup = html_code(url)
             cus_res = cus_data(soup)
             page+=1
-            return str(soup)
+           
             if cus_res == 'n/a':
                 continue
             if len(cus_res) == 0:
                 break
             for review in cus_res:
                 reviews.append(review)
-       
-              
+     
 
      
     to_json_array = {}
