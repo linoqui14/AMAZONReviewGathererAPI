@@ -112,8 +112,8 @@ def getReviewData(
     for i,review in enumerate(reviews):
         to_json_array[i] = review.jasonnize()
           
-    return url
     return json.dumps(to_json_array)
+    # return json.dumps(to_json_array)
 
 if __name__ == '__main__':
  
