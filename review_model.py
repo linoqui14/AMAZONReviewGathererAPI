@@ -24,15 +24,15 @@ class Review:
             'num_found_helpful':self.num_found_helpful,
         }
 
-def to_Object(object):
-    return Review(
-        name = object['name'],
-        rating = object['rating'],
-        title = object['title'],
-        comment = object['comment'],
-        region = object['region'],
-        date = object['date'],
-        num_found_helpful = object['num_found_helpful'],
-    )
+    def to_Object(object):
+        return Review(
+            name = object['name'],
+            rating = object['rating'],
+            title = object['title'],
+            comment = object['comment'],
+            region = object['region'],
+            date = object['date'],
+            num_found_helpful = object['num_found_helpful'],
+        )
         
     
