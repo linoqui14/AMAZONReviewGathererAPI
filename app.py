@@ -76,13 +76,14 @@ def cus_data(soup):
 @app.route('/')
 def test():
     return 'Test'
-    
+
 @app.route('/<url>',methods=['GET'])
 def getReviewData(
     url = ''
 ):
     
     url =  Deepy.deasciisize(url)
+    return url
     if url == '':
         return
     page = 1
