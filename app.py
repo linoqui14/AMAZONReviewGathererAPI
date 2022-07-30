@@ -73,7 +73,9 @@ def cus_data(soup):
         review = Review(name,rating_double,title,comment,region,date,num_found_helpful)
         cus_list.append(review)
     return cus_list
-
+@app.route('/')
+def test():
+    return 'Test'
 @app.route('/<url>',methods=['GET'])
 def getReviewData(
     url = ''
