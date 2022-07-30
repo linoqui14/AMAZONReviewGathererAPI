@@ -95,7 +95,7 @@ def getReviewData(
         url = url+str(page)
         
         soup = html_code(url)
-        return url
+        return soup
         cus_res = cus_data(soup)
         
         page+=1
