@@ -83,7 +83,9 @@ def getReviewData(
 ):
     
     url =  Deepy.deasciisize(url)
-    
+    urlsplit = url.split('/')
+
+    url = urlsplit[0]+"//"+urlsplit[2]+'/'+urlsplit[3]+'/'+'product-reviews'+'/'+urlsplit[5]+'/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews'
     if url == '':
         return ''
     page = 1
