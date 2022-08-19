@@ -55,6 +55,7 @@ for review in reviews:#alterate all reviews
     #then you can just say
     print(review.name)#for example
     print(review.title)#for example
+    print(review.sentiment)#for example
     print('-------------------------------')
 
 
