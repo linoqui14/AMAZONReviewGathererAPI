@@ -10,25 +10,25 @@ Please install following dependencies
     amazon_url = asciisize('https://www.amazon.com/Controller-Vertical-Charging-Accessories-Rechargeable/product-reviews/B08VMV5Q3Z/ref=cm_cr_dp_d_show_all_btm?      ie=UTF8&reviewerType=all_reviews')
     ```
 3. Use request to get the result from the server
-    ```
+    ```python
     r = requests.get('http://127.0.0.1:5000/'+amazon_url)
     ```
 4. Make it into a json object using json.loads
-    ```
+    ```python
     json_objects = json.loads(r.content)#get the content of request
     ```
 5. Recommended that you must put all the object in a list for easy use
-   ```
+   ```python
    reviews = []#for review model
    ```
 6. Loop all the json object and convert it into a Review object using Review.to_object function from Review model class
-    ```
+    ```python
     for x in json_objects:#alterate all json object from json_objects
        review = Review.to_Object(json_objects[x])#create a review_model object from that json using to_Object
        reviews.append(review)#append it to the list
     ```
  # Full example code
-```
+```python
 import requests
 import json
 from review_model import Review
