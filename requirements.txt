@@ -10,3 +10,4 @@ requests==2.27.1
 soupsieve==2.3.2.post1
 wordninja==2.0.0
 zipp==3.8.1
+vader

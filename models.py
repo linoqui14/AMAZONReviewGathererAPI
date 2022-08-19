@@ -2,6 +2,13 @@
 
 
 
+class CommentSentiment:
+    def __init__(self,id,overallRating,overallSentiment,) -> None:
+        self.id = id
+        self.overallRating = overallRating
+        self.overallSentiment = overallSentiment
+
+
 
 class Review:
     def __init__(self,name,rating,title,comment,region,date,num_found_helpful = 0,sentiment = {}) -> None:

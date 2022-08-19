@@ -6,7 +6,7 @@ from endecrypt import Deepy
 
 
  # sample url https://www.amazon.com/Robux-Roblox-Online-Game-Code/product-reviews/B07RZ74VLR/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews
-sampleurl = 'https://www.amazon.com/dp/B08VMV5Q3Z/ref=sspa_dk_detail_3?psc=1&pd_rd_i=B08VMV5Q3Z&pd_rd_w=IbNBW&content-id=amzn1.sym.3be1c5b9-5b41-4830-a902-fa8556c19eb5&pf_rd_p=3be1c5b9-5b41-4830-a902-fa8556c19eb5&pf_rd_r=YF0W1WSWFKNEADFP8VK8&pd_rd_wg=ic0kd&pd_rd_r=30e597ff-46b2-4469-915a-3b966bb8bb96&s=videogames&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWw&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyNzZEM0NRRUpVN09RJmVuY3J5cHRlZElkPUEwOTg3NzMxQlhHTEZVNEdEVktOJmVuY3J5cHRlZEFkSWQ9QTA3ODg3MTEyVkMzQ05RT09LODZGJndpZGdldE5hbWU9c3BfZGV0YWlsJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ=='
+sampleurl = 'https://www.amazon.com/Controller-Vertical-Charging-Accessories-Rechargeable/product-reviews/B08VMV5Q3Z/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews'
 # sampleReviewURLList = sampleurl.split('/')
 # sampleReviewURL = sampleReviewURLList[0]+"//"+sampleReviewURLList[2]+'/'+sampleReviewURLList[3]+'/'+'product-reviews'+'/'+sampleReviewURLList[5]+'/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews'
 # print(sampleReviewURL)

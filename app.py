@@ -2,11 +2,30 @@ import json
 from flask import Flask
 import requests
 from bs4 import BeautifulSoup
-from review_model import Review
+from models import Review
 import wordninja as wninja
 from endecrypt import Deepy
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 app = Flask(__name__)
 
+def sentiment_scores(sentence):
+ 
+    # Create a SentimentIntensityAnalyzer object.
+    sid_obj = SentimentIntensityAnalyzer()
+ 
+    # polarity_scores method of SentimentIntensityAnalyzer
+    # object gives a sentiment dictionary.
+    # which contains pos, neg, neu, and compound scores.
+    sentiment_dict = sid_obj.polarity_scores(sentence)
+    overallRating = ''
+    # decide sentiment as positive, negative and neutral
+    if sentiment_dict['compound'] >= 0.05 :
+        overallRating = 'Positive'
+    elif sentiment_dict['compound'] <= - 0.05 :
+        overallRating = "Negative"
+    else :
+        overallRating = "Neutral"
+    return {'overallSentiment':sentiment_dict,'overallRating':overallRating}
 
 
 # ‘/’ URL is bound with hello_world() function.
@@ -70,7 +89,7 @@ def cus_data(soup):
         num_found_helpful = data_arr[5].split(' ')[0]
         if num_found_helpful=='':
             num_found_helpful = 0
-        review = Review(name,rating_double,title,comment,region,date,num_found_helpful)
+        review = Review(name,rating_double,title,comment,region,date,num_found_helpful,sentiment_scores(comment))
         cus_list.append(review)
     return cus_list
 @app.route('/')
@@ -95,18 +114,19 @@ def getReviewData(
     page = 1
     url.replace('pageNumber=1','')
     url = url+'&reviewerType=avp_only_reviews&pageNumber='
+
     reviews = []
     while True:
             url = url+str(page)
             soup = html_code(url)
             cus_res = cus_data(soup)
             page+=1
-           
             if cus_res == 'n/a':
                 continue
             if len(cus_res) == 0:
                 break
             for review in cus_res:
+                # print(review.sentiment)
                 reviews.append(review)
      
 
@@ -114,7 +134,7 @@ def getReviewData(
     to_json_array = {}
     for i,review in enumerate(reviews):
         to_json_array[i] = review.jasonnize()
-          
+       
     return json.dumps(to_json_array)
     # return json.dumps(to_json_array)
 
