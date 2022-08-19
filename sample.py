@@ -6,7 +6,7 @@ from endecrypt import Deepy
 
 
  # sample url https://www.amazon.com/Robux-Roblox-Online-Game-Code/product-reviews/B07RZ74VLR/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews
-sampleurl = 'https://www.amazon.com/Xbox-Wireless-Controller-Pulse-Red-Windows-Devices/dp/B0859XT328/ref=pd_rhf_d_cr_s_pd_crcd_sccl_1_5/138-6449856-6123309?pd_rd_w=FzIna&content-id=amzn1.sym.cee83ff1-8fc1-4533-a3f5-bf3d998f4558&pf_rd_p=cee83ff1-8fc1-4533-a3f5-bf3d998f4558&pf_rd_r=KN035TNTA8WE0GEGT514&pd_rd_wg=Anm5q&pd_rd_r=670f533c-46d1-4e81-a7c3-6acc5bf40ba3&pd_rd_i=B0859XT328&psc=1'
+sampleurl = 'https://www.amazon.com/dp/B08VMV5Q3Z/ref=sspa_dk_detail_3?psc=1&pd_rd_i=B08VMV5Q3Z&pd_rd_w=IbNBW&content-id=amzn1.sym.3be1c5b9-5b41-4830-a902-fa8556c19eb5&pf_rd_p=3be1c5b9-5b41-4830-a902-fa8556c19eb5&pf_rd_r=YF0W1WSWFKNEADFP8VK8&pd_rd_wg=ic0kd&pd_rd_r=30e597ff-46b2-4469-915a-3b966bb8bb96&s=videogames&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWw&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyNzZEM0NRRUpVN09RJmVuY3J5cHRlZElkPUEwOTg3NzMxQlhHTEZVNEdEVktOJmVuY3J5cHRlZEFkSWQ9QTA3ODg3MTEyVkMzQ05RT09LODZGJndpZGdldE5hbWU9c3BfZGV0YWlsJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ=='
 # sampleReviewURLList = sampleurl.split('/')
 # sampleReviewURL = sampleReviewURLList[0]+"//"+sampleReviewURLList[2]+'/'+sampleReviewURLList[3]+'/'+'product-reviews'+'/'+sampleReviewURLList[5]+'/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews'
 # print(sampleReviewURL)
@@ -18,11 +18,8 @@ sampleurl = 'https://www.amazon.com/Xbox-Wireless-Controller-Pulse-Red-Windows-D
 
 # #convert to ascii
 ascii_url = Deepy.asciisize(sampleurl)
-
-
-print(ascii_url)
-# r = requests.get('https://argatherer.herokuapp.com/'+ascii_url)#append it to url request
-
+r = requests.get('http://127.0.0.1:5000/'+ascii_url)#append it to url request
+print(r.content)
 # json_objects = json.loads(r.content)#get the content of request
 # reviews = []#empty list
 # for x in json_objects:#alterate all json object from json_objects
