@@ -14,6 +14,9 @@ class Deepy:
         result = ''
         for x in message.split('-'):
             if x=='':continue
-            result+=(chr(int(x)))
+            try:
+                result+=(chr(int(x)))
+            except:
+                continue
         return result
 
