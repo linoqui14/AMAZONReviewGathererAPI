@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from models import Review
 import wordninja as wninja
-from endecrypt import Deepy
+from endecrypt import asciisize,deasciisize
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 app = Flask(__name__)
 
@@ -101,7 +101,7 @@ def getReviewData(
     url = ''
 ):
     
-    url =  Deepy.deasciisize(url)
+    url =  deasciisize(url)
     urlsplit = url.split('/')
     if urlsplit[3] == 'dp':
         return {
