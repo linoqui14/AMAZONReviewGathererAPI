@@ -46,9 +46,10 @@ def html_code(url):
     # into getdata function
     htmldata = getdata(url)
     soup = BeautifulSoup(htmldata, 'html.parser')
-  
+    
     # display html code
     return (soup)
+
 def cus_data(soup):
     cus_list = []
     for item in soup.find_all("div", attrs={'data-hook','review'}):
@@ -97,11 +98,22 @@ def test():
     return 'Test'
 
 @app.route('/<url>',methods=['GET'])
+
 def getReviewData(
     url = ''
 ):
     
     url =  deasciisize(url)
+    if 'https://shopee.ph/' in url:
+        print(url)
+        soup = html_code(url)
+        review = soup.find_all("div",attrs={"class": "product-rating-overview"})
+        print(soup)
+        # cus_res = cus_data(soup)
+
+        return {
+            'site':'shoppe'
+        }
     urlsplit = url.split('/')
     if urlsplit[3] == 'dp':
         return {
