@@ -6,7 +6,7 @@ from models import Review
 import wordninja as wninja
 from endecrypt import asciisize,deasciisize
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-from selen_shopee import getReviews
+# from selen_shopee import getReviews
 app = Flask(__name__)
 
 def sentiment_scores(sentence):
@@ -107,12 +107,13 @@ def getReviewData(
     url =  deasciisize(url)
     # if shopee
     if 'https://shopee.ph/' in url:
-        reviews = getReviews(url)
-        to_json_array = {}
+        pass
+        # reviews = getReviews(url)
+        # to_json_array = {}
 
-        for i,review in enumerate(reviews):
-            to_json_array[i] = review.jasonnize()
-        return json.dumps(to_json_array)
+        # for i,review in enumerate(reviews):
+        #     to_json_array[i] = review.jasonnize()
+        # return json.dumps(to_json_array)
     
     urlsplit = url.split('/')
     if urlsplit[3] == 'dp':
