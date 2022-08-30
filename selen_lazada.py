@@ -10,9 +10,10 @@ driver.get("https://www.lazada.com.ph/products/199-mens-fashion-casual-waterproo
 
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight/2);")
 time.sleep(1)
-contents = driver.find_elements(By.CLASS_NAME,'item-content')
+
 current_page_num = 1
 while True:
+    contents = driver.find_elements(By.CLASS_NAME,'item-content')
     next_btn = driver.find_element(By.CLASS_NAME,'next-pagination-pages')
     btn = next_btn.find_elements(By.TAG_NAME,'button')
     num_pages = int(next_btn.text.split('...')[1])
